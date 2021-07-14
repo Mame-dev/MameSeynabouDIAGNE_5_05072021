@@ -10,44 +10,122 @@
 </head>
 
 <body>
-    <!-- Header ) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <a class="navbar-brand text-info" href="index.html">Accueil</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-info" href="pages/cart.html">Panier</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Commande
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="pages/order.html">En cours</a>
-                        <a class="dropdown-item" href="#">Historique</a>
-                        <a class="dropdown-item" href="#">Transactions</a>
-                        <a class="dropdown-item" href="#">Retours et Remboursements</a>
-                        <a class="dropdown-item" href="#">Commandes reçues</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0 mr-auto">
-                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un article"
-                    aria-label="search-bar">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit" aria-label="search-button"><i
-                        class="fa fa-search"></i></button>
-            </form>
-            <div class="account">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Compte <i
-                        class="fa fa-user-circle-o"></i></button>
-            </div>
+    <!-- Header Start -->
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">
+          <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="logo.png"  alt="logo Orinoco"/>
+        </a>
+        <nav class="nav">
+          <button class="nav__toggle" aria-expanded="false" type="button">
+            menu
+          </button>
+          <ul class="nav__wrapper">
+            <li class="nav__item nav__item--end">
+                <a href="#">Produits</a>
+            </li>
+            <li class="nav__item">
+                <a href="#">Panier</a>
+            </li>
+            <li class="nav__item">
+                <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Description Start -->
+    <div class="top">
+      <h1>
+        Bienvenue sur Orinoco, notre tout nouveau site Internet !
+      <h1>
+      <p>
+        Vous trouverez notre nouvelle collection de caméras vintage.
+      </p>
+    </div>
+    <!-- Description End -->
+
+    <!-- Produits Start -->
+    <section>
+       <div class="contain">
+            <a href="#" class="bloc">
+                <img src="http://localhost:3000/images/vcam_1.jpg"
+                    alt="Zurss 50S">
+                <div class="text">
+                    <h2>Zurss 50S</h2>
+                </div>
+                <div class="prix">
+                    <h2>499,00€</h2>
+                </div>
+                <p class="nuit">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </a>
+
+            <a href="#" class="bloc">
+                <img src="http://localhost:3000/images/vcam_2.jpg"
+                alt="Hirsch 400DTS">
+                <div class="text">
+                    <h2>Hirsch 400DTS</h2>
+                </div>
+                <div class="prix">
+                    <h2>309,90€</h2>
+                </div>
+                <p class="nuit">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </a>
+
+            <a href="#" class="bloc">
+                <img src="http://localhost:3000/images/vcam_3.jpg" 
+                alt="Franck JS 105">
+                <div class="text">
+                    <h2>Franck JS 105</h2>
+                </div>
+                <div class="prix">
+                    <h2>209,90€</h2>
+                </div>
+                <p class="nuit">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </a>
+
+            <a href="#" class="bloc">
+                <img src="http://localhost:3000/images/vcam_4.jpg" 
+                alt="Kuros TTS">
+                <div class="text">
+                    <h2>Kuros TTS</h2>
+                </div>
+                <div class="prix">
+                    <h2>159,90€</h2>
+                </div>
+                <p class="nuit">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </a>
+
+            <a href="#" class="bloc">
+                <img src="http://localhost:3000/images/vcam_5.jpg" 
+                alt="Katatone">
+                <div class="text">
+                    <h2>Katatone</h2>
+                </div>
+                <div class="prix">
+                    <h2>599,00€</h2>
+                </div>
+                <p class="nuit">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </a>
         </div>
-    </nav>
+ 
+    </section>
+    <!-- Produits End -->
+
+
+<script src="header.js"></script>
 </body>
 
 </html>
