@@ -204,13 +204,12 @@ table {
     margin-left: 1.5rem!important;
 }
 
-.contain {
+#main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-right: 14px;
 }
-
 .bloc {
     border-radius: 25px;
     margin-top: 30px;
@@ -220,47 +219,44 @@ table {
     display: flex;
     flex-direction: column;
     width: 27%;
-    height: 200px;
-}
+    height: 360px;
+    &:hover{
+        color: #9932cc;
+    }
+    &.bloc img {
+        height: 67%;
+        width: 100%;
+        margin-right: 11px;
+        object-fit: cover;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        background-color: #fff;
+        }
+    & .text {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        color: black;
+    }
+    & #description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-.bloc img {
-    height: 55%;
-    width: 100%;
-    margin-right: 11px;
-    object-fit: cover;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    background-color: #fff;
-}
-
-.text {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    color: black;
-}
-
-.prix {
-    text-align: right;
-}
-
-.description {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.achat {
-    display: contents;
-}
-.achat button {
-    height: 40px;
-    padding: 5px 2px;
-    background-color: #f3e9f1;
-    border-color: #f3e9f1;
-    border-radius: 15px;
-    margin-top: 10px;
-}
+    .achat {
+        display: contents;
+    }
+    .achat button {
+        height: 40px;
+        padding: 5px 2px;
+        background-color: #f3e9f1;
+        border-color: #f3e9f1;
+        border-radius: 15px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+} 
 .footer{
     background-color: #f3e9f1;
     margin-top: 50px;
@@ -268,12 +264,19 @@ table {
 
 .container{
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 14px;
 }
 
 .footer--social{
     display: flex;
     justify-content: center;
     align-items: center;
+    & :hover{
+        color: #9932cc;
+    }
 }
 
 .footer--social a {
@@ -288,7 +291,7 @@ table {
 }
 
 @media screen and (min-width: 50px) and (max-width: 374px) {
-.contain {
+    #main  {
         flex-direction: column;
         margin-left: 15px;
         margin-right: 15px;
@@ -303,7 +306,7 @@ table {
 }
 
 @media screen and (min-width: 375px) and (max-width: 667px) {
-.contain {
+    #main  {
         flex-direction: column;
         margin-left: 15px;
         margin-right: 15px;
@@ -317,17 +320,36 @@ table {
     }
 }
     @media screen and (min-width: 668px) and (max-width: 1024px) {
-        .contain {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        margin-right: 14px;
-    }
+    
     .bloc {
         width: 45%;
-        height: 14em;
-    }
-    .bloc img {
-        height: 7em;
     }
 }
+
+/*panier*/
+
+.panier {
+    border: 1.5px solid #42403e;
+    border-radius: 10px;
+    background-color: #9932f84d;
+    padding: 20px;
+    margin: 45px;
+    & h1 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    & .panier__contain {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.commande {
+        padding: 20px;
+    }
+  
+  /*Confirmation*/
+
+  .confirmation{
+      text-align: center;
+  }

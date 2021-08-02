@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
-    <title>Orinoco - Zurss 50S</title>
+    
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <title>Confirmation - Orinoco</title>
     <meta name="description" content="Orinoco site e-commerce de caméras vintage">
 </head>
 
 <body>
-
     <!-- Header Start -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <a href="#" class="brand">
+            <a href="index.html" class="brand">
                 <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="logo.png" alt="logo Orinoco" />
             </a>
             <nav class="nav">
@@ -24,10 +27,10 @@
                 </button>
                 <ul class="nav__wrapper">
                     <li class="nav__item nav__item--end">
-                        <a href="#contain">Produits</a>
+                        <a href="produit.html">Produits</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#">Panier</a>
+                        <a href="panier.html">Panier</a>
                     </li>
                     <li class="nav__item">
                         <a href="mailto:Orinoco.caméras@gmail.com">Contact</a>
@@ -38,30 +41,27 @@
     </header>
     <!-- Header End -->
 
-    <!-- Produits Start -->
-    <section class="contain">
-        <div class="bloc">
-            <img src="http://localhost:3000/images/vcam_1.jpg" alt="Zurss 50S">
-            <div class="text">
-                <h2 class="nom">Zurss 50S</h2>
-                <h2 class="prix">499,00€</h2>
-            </div>
-            <select class="lenses">
-                <option selected="lenses"> Lenses </option>
-                <option value="50mm 1.6"> 50mm 1.6 </option>
-                <option value="35mm 1.4"> 35mm 1.4 </option>
-            </select>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.
-            </p>
-            <a href="Zurss-50S.html" class="achat">
-                <button type="button">
-                    <i class="fas fa-cart-plus fa-2x"></i>
-                </button>
-            </a>
+    <!-- Description Start -->
+    <div class="top">
+        <h1>
+            Bienvenue sur Orinoco, notre tout nouveau site Internet !
+        </h1>
+        <p>
+            Vous trouverez notre nouvelle collection de caméras vintage.
+        </p>
+    </div>
+    <!-- Description End -->
+
+    <!-- Confirmation Start -->
+    <main>
+        <div class="confirmation">
+            <h1>Merci de votre commande</h1>
+            <p>Commande n°...</p>
+            <p>Prix de la commande</p>
+            <p>Identifiant de commande</p>
         </div>
-    </section>
+    </main>
+    <!-- Confirmation End -->
 
     <!-- Footer start -->
     <footer>
@@ -93,6 +93,19 @@
         </div>
     </footer>
     <!-- Footer End -->
+    <script src="js/header.js">
+    </script>
+    <script src="js/panier.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>-->
 </body>
 
 </html>

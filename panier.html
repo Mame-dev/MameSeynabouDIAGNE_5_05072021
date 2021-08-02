@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
-    <title>Accueil - Orinoco</title>
+    <title>Panier - Orinoco</title>
     <meta name="description" content="Orinoco site e-commerce de caméras vintage">
 </head>
 
@@ -18,7 +18,7 @@
     <!-- Header Start -->
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <a href="#" class="brand">
+            <a href="index.html" class="brand">
                 <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="logo.png" alt="logo Orinoco" />
             </a>
             <nav class="nav">
@@ -53,35 +53,51 @@
     <!-- Description End -->
 
     <!-- Produits Start -->
-    <main id="main">
-        <template id="templateArticle">
-            <article id="articleLink" class="bloc">
-                <img
-                src="http://localhost:3000/images/vcam_1.jpg"
-                id="imageUrl"
-                />
-                <div class="text">
-                    <p id="name">Zurss 50S</p>
-                    <p id="price">49900€</p>
-                </div>
-                <p id="description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <a href="produit.html" class="achat">
-                    <button type="button">
-                        <i class="fas fa-cart-plus fa-2x"></i>
-                    </button>
-                </a>
-            </article>
-        </template>
-      </main>
+    <main>
+        <div class="panier">
+            <h1>Votre panier</h1>
+            <div class="panier__contain">
+                <p>Produit</p>
+                <p>Prix</p>
+                <p>Quantité</p>
+                <p>Total</p>
+            </div>
+        </div>
+    
+        <div class="commande">
+            <h1>Formulaire de commande</h1>
+    
+            <div>
+                <label for="lastname">Nom</label>
+                <input type="text" name="lastName" id="lastName" required />
+            </div>
+            <div>
+                <label for="firstname">Prenom</label>
+                <input type="text" name="firstName" id="firstName" required />
+            </div>
+            <div>
+                <label for="address">Adresse</label>
+                <input type="text" name="address" id="address" required />
+            </div>
+            <div>
+                <label for="city">Ville</label>
+                <input type="text" name="city" id="city" required />
+            </div>
+            <div>
+                <label for="email">Adresse mail</label>
+                <input type="email" name="email" id="email" required />
+            </div>
+            <div>
+                <input type="button" value="Envoyer" />
+            </div>
+        </div>
+    </main>
     <!-- Produits End -->
 
     <!-- Footer start -->
     <footer>
         <div class="footer">
-            <div class="contain">
+            <div class="container">
                 <div class="footer--social list-inline text-center">
                     <a href="https://fr-fr.facebook.com/">
                         <i class="fab fa-facebook-f fa-2x"></i>
@@ -110,7 +126,7 @@
     <!-- Footer End -->
     <script src="js/header.js">
     </script>
-    <script src="js/index.js"></script>
+    <script src="js/panier.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
