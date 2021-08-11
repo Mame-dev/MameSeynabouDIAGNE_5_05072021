@@ -75,7 +75,15 @@ for (let l = 0; l < btn_supprimer.length; l++) {
     // Alerte pour avertir que le produit a été supprimer et rechargement de la page
     alert("Ce produit a été supprimer du panier");
     window.location.href = "panier.html";
-    })
+    });
 }
 
+//--------- Le bouton pour vider le panier ---------
+// Le code HTML du bouton à afficher dans la page
+const btn_tout_supprimer_panier_html = `
+<button class= "btn-tout-supprimer-panier> Vider le panier </button>
+`
+
+//Insertion du bouton dans le HTML du panier
+positionElement3.insertAdjacentHTML
 
