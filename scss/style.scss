@@ -374,9 +374,12 @@ table {
         text-align: center;
         margin-bottom: 15px;
     }
-    & .panier__contain {
+    & .panier__container {
         display: flex;
         justify-content: space-around;
+    }
+    & .panier__total{
+        display: flex;
     }
 }
 

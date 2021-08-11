@@ -8,8 +8,8 @@
     <link href="fontawesome/css/all.css" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Panier - Orinoco</title>
     <meta name="description" content="Orinoco site e-commerce de caméras vintage">
 </head>
@@ -39,57 +39,71 @@
             </nav>
         </div>
     </header>
+
     <!-- Header End -->
 
-    <!-- Description Start -->
-    <div class="top">
-        <h1>
-            Bienvenue sur Orinoco, notre tout nouveau site Internet !
-        </h1>
-        <p>
-            Vous trouverez notre nouvelle collection de caméras vintage.
-        </p>
-    </div>
-    <!-- Description End -->
-
     <!-- Produits Start -->
-    <main>
-        <div class="panier">
-            <h1>Votre panier</h1>
-            <div class="panier__contain">
-                <p>Produit</p>
-                <p>Prix</p>
-                <p>Quantité</p>
-                <p>Total</p>
-            </div>
-        </div>
+    <main id="container">
+        
+        <h3>Votre panier</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th><i class="fas fa-trash-alt"></i></th>
+                </tr>
+            </thead>
+            <tbody class="panier__total">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>price</td>
+                </tr>
+            </tbody>
+        </table>
     
         <div class="commande">
-            <h1>Formulaire de commande</h1>
-    
-            <div>
-                <label for="lastname">Nom</label>
-                <input type="text" name="lastName" id="lastName" required />
-            </div>
-            <div>
-                <label for="firstname">Prenom</label>
-                <input type="text" name="firstName" id="firstName" required />
-            </div>
-            <div>
-                <label for="address">Adresse</label>
-                <input type="text" name="address" id="address" required />
-            </div>
-            <div>
-                <label for="city">Ville</label>
-                <input type="text" name="city" id="city" required />
-            </div>
-            <div>
-                <label for="email">Adresse mail</label>
-                <input type="email" name="email" id="email" required />
-            </div>
-            <div>
-                <input type="button" value="Envoyer" />
-            </div>
+            <h3>Formulaire de commande</h3>
+            <form>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="lastname">Nom</label>
+                            <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Entrer votre nom" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="firstname">Prénom</label>
+                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Entrer votre prénom" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="address">Adresse</label>
+                            <input type="text" name="address" class="form-control" id="address" placeholder="Entrer votre adresse" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="city">Ville</label>
+                            <input type="text" name="city" class="form-control" id="city" placeholder="Entrer votre Ville" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse mail</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Entrer votre email" required />
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-primary" value="Envoyer" />
+                </div>
+            </form>
         </div>
     </main>
     <!-- Produits End -->
@@ -128,7 +142,7 @@
     </script>
     <script src="js/panier.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -136,7 +150,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>-->
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

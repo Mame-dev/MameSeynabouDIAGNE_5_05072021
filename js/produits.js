@@ -84,7 +84,7 @@ const idProduitSelectionner = cameras.find((element) => element._id === id);
 console.log(idProduitSelectionner);
 
 //Sélection de la classe ou je vais injecter le code html
-const positionElement2 = document.querySelector(".contain");
+const positionElement2 = document.querySelector(".contain-produit");
 console.log(positionElement2);
 
 //La structure html pour l'affichage du produit sélectionné
@@ -92,7 +92,7 @@ const structureProduit2 = `
     <article class="bloc-produit">
         <img
         src="${idProduitSelectionner.imageUrl}"
-        id="image"
+        id="imageUrl"
         />
         <div class="text">
             <p id="name">${idProduitSelectionner.name}</p>
@@ -124,7 +124,7 @@ const structureProduit2 = `
         structureOptions =
          structureOptions +
         `
-        <option value="${j+1}">${optionQuantite[j]}</option>
+        <option value="${optionQuantite[j]}">${optionQuantite[j]}</option>
         ` ;
     } 
   console.log(structureOptions);
@@ -177,8 +177,8 @@ console.log(produitEnregistreDansLocalStorage);
 
  //Fonction fenêtre pop up
     const popupConfirmation = () =>{
-        if (window.confirm(`${idProduitSelectionner.name} option: ${choixForm} a bien été ajouté au panier 
-        Consultez le panier OK ou revenir à l'accueil ANNULER`)) {
+        if (window.confirm(`${idProduitSelectionner.name} Lense: ${choixForm} a bien été ajouté au panier 
+Consultez le panier OK ou revenir à l'accueil ANNULER`)) {
           window.location.href = "panier.html";  
         } else { 
           window.location.href = "index.html";  
