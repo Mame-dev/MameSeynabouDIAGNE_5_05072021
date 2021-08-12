@@ -17,72 +17,18 @@ console.log(id);
 //---------2 méthodes possible----------
 
 //--- Méthode 1 : avec fetch et en mettant la valeur de l'id à la fin de  l'url
-//let response = fetch ('http://localhost:3000/api/cameras/${id}');
+fetch ('http://localhost:3000/api/cameras/' + id)
+.then (function (response) {
+    return response.json()
+}) 
+.then (function (response) {
+    displayProduct(response);
+}) 
+.catch (function (error) {
+    console.log(error);
+})
 
-//--- Méthode 2 : utilisation de la méthode .find()
-const cameras = [
-  {
-    "lenses": [
-      "35mm 1.4",
-      "50mm 1.6"
-    ],
-    "_id": "5be1ed3f1c9d44000030b061",
-    "name": "Zurss 50S",
-    "price": 49900,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "imageUrl": "vcam_1.jpg"
-  },
-  {
-    "lenses": [
-      "50mm 1.8",
-      "60mm 2.8",
-      "24-60mm 2.8/4.5"
-    ],
-    "_id": "5be1ef211c9d44000030b062",
-    "name": "Hirsch 400DTS",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "price": 309900,
-    "imageUrl": "vcam_2.jpg"
-  },
-  {
-    "lenses": [
-      "25mm 4.5"
-    ],
-    "_id": "5be9bc241c9d440000a730e7",
-    "name": "Franck JS 105",
-    "price": 209900,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "imageUrl": "vcam_3.jpg"
-  },
-  {
-    "lenses": [
-      "50mm 1.7",
-      "35mm 1.4"
-    ],
-    "_id": "5be9c4471c9d440000a730e8",
-    "name": "Kuros TTS",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "price": 159900,
-    "imageUrl": "vcam_4.jpg"
-  },
-  {
-    "lenses": [
-      "50mm 1.4",
-      "35mm 1.8",
-      "28-200mm 2.8/4.5"
-    ],
-    "_id": "5be9c4c71c9d440000a730e9",
-    "name": "Katatone",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "price": 59900,
-    "imageUrl": "vcam_5.jpg"
-  }
-];
-console.log(cameras);
-
-const idProduitSelectionner = cameras.find((element) => element._id === id);
-console.log(idProduitSelectionner);
-
+function displayProduct (idProduitSelectionner){
 //Sélection de la classe ou je vais injecter le code html
 const positionElement2 = document.querySelector(".contain-produit");
 console.log(positionElement2);
@@ -140,14 +86,6 @@ const structureProduit2 = `
  //-------- La gestion du panier
 //La récupération des données sélectionnées par l'utilisateur et envoie du panier
 
-//Sélection de l'id du formulaire
-const idForm = document.querySelector("#option_produit");
-console.log(option_produit);
-
- //Mettre le choix de l'utilisateur dans une variable
-    const choixForm = idForm.value;
-    console.log(choixForm);
-
 //Sélection du bouton Ajouter l'article au panier
     const btn_envoyerPanier = document.querySelector("#btn-envoyer");
    console.log(btn_envoyerPanier);
@@ -155,6 +93,15 @@ console.log(option_produit);
 //Ecouter le bouton et l'envoyer au panier
     btn_envoyerPanier.addEventListener("click" , (event)=>{
     event.preventDefault();
+
+    //Sélection de l'id du formulaire
+const idForm = document.querySelector("#option_produit");
+console.log(option_produit);
+
+ //Mettre le choix de l'utilisateur dans une variable
+    const choixForm = idForm.value;
+    console.log(choixForm);
+
     //Récuperation des valeurs du formulaire pour envoyer dans le panier
     let optionsProduit = {
         name : idProduitSelectionner.name,
@@ -205,4 +152,4 @@ Consultez le panier OK ou revenir à l'accueil ANNULER`)) {
         popupConfirmation();
     };
     });
-
+}

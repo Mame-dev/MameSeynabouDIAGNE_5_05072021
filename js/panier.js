@@ -34,7 +34,7 @@ else{
             <tbody class="panier__total">
                 <tr>
                     <td>${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</td>
-                    <td>${produitEnregistreDansLocalStorage[k].price} €</td>
+                    <td>${produitEnregistreDansLocalStorage[k].prix} €</td>
                     <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
                 </tr>
             </tbody>
@@ -81,9 +81,103 @@ for (let l = 0; l < btn_supprimer.length; l++) {
 //--------- Le bouton pour vider le panier ---------
 // Le code HTML du bouton à afficher dans la page
 const btn_tout_supprimer_panier_html = `
-<button class= "btn-tout-supprimer-panier> Vider le panier </button>
+<button class= "btn-tout-supprimer-panier"> Vider le panier </button>
 `
-
+console.log(positionElement3);
 //Insertion du bouton dans le HTML du panier
-positionElement3.insertAdjacentHTML
+positionElement3.insertAdjacentHTML("beforeend",btn_tout_supprimer_panier_html);
 
+// La sélection de la référence du bouton "btn-tout-supprimer-panier"
+const btn_tout_supprimer_panier = document.querySelector(".btn-tout-supprimer-panier")
+console.log(btn_tout_supprimer_panier);
+
+// Suppression de la key "produit" du local Storage pour vider entierement le panier
+btn_tout_supprimer_panier.addEventListener("click" , (event)=>{
+event.preventDefault();
+
+//.removeItem pour vider le local storage
+localStorage.removeItem("produit");
+
+//alert "Le panier a été vidé"
+alert("Le panier a été vidé");
+
+//rechargement de la page
+window.location.href = "panier.html";
+});
+
+//--------- Le montant total du panier ---------
+//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+let prixTotalCalcul = [];
+
+//Aller chercher les prix dans le panier
+for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
+    let prixProduitsDansLePanier = produitEnregistreDansLocalStorage[m].prix;
+    
+    //Mettre les prix du panier dans la variable "prixTotalCalcul"
+    prixTotalCalcul.push(prixProduitsDansLePanier)
+
+    console.log(prixTotalCalcul);
+}
+
+//Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode .reduce
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const prixTotal = prixTotalCalcul.reduce(reducer,0)
+console.log(prixTotal);
+
+//Le code HTML du prix total à afficher 
+const affichagePrixHtml = `
+<div class= "affichage-prix-html"> Le prix total est de : ${prixTotal} € </div>
+`
+//Injection html dans la page panier après le dernier enfant
+positionElement3.insertAdjacentHTML("beforeend",affichagePrixHtml);
+
+//----------------- Le formulaire de commande ----------
+
+const affichageFormulaireHtml = () => {
+// Sélection élément du DOM pour le positionnement du formulaire
+const positionElement4 = document.querySelector("#container");
+
+    const structureFormulaire = `
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="lastname">Nom</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Entrer votre nom" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Entrer votre prénom" required />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="address">Adresse</label>
+                        <input type="text" name="address" class="form-control" id="address" placeholder="Entrer votre adresse" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="city">Ville</label>
+                        <input type="text" name="city" class="form-control" id="city" placeholder="Entrer votre Ville" required />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse mail</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Entrer votre email" required />
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Envoyer" />
+            </div>
+        </form>
+        `;
+// Injection HTML
+positionElement4.insertAdjacentHTML("afterend", structureFormulaire);
+
+};
+
+// Affichage du formulaire
+affichageFormulaireHtml();
+
+//Récupération des valeurs du formulaire pour les mettre dans le local storage
