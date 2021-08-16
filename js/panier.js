@@ -168,7 +168,7 @@ const positionElement4 = document.querySelector("#container");
                 <input type="email" name="email" class="form-control" id="email" placeholder="Entrer votre email" required />
             </div>
             <div>
-                <input type="submit" class="btn btn-primary" value="Envoyer" />
+                <input type="submit" id="envoyerFormulaire" value="Envoyer" />
             </div>
         </form>
         `;
@@ -180,4 +180,96 @@ positionElement4.insertAdjacentHTML("afterend", structureFormulaire);
 // Affichage du formulaire
 affichageFormulaireHtml();
 
-//Récupération des valeurs du formulaire pour les mettre dans le local storage
+//Sélection du bouton envoyer le formulaire
+const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
+console.log(btnEnvoyerFormulaire);
+
+//-----------addEventListener---------
+btnEnvoyerFormulaire.addEventListener("click", (event)=> {
+event.preventDefault();
+
+//Récupération des valeurs du formulaire
+const formulaireValues = {
+    lastname: document.querySelector("#lastname").value,
+    firstname: document.querySelector("#firstname").value,
+    address: document.querySelector("#address").value,
+    city: document.querySelector("#city").value,
+    email: document.querySelector("#email").value,
+}
+console.log("formulaireValues");
+console.log(formulaireValues);
+
+//---------------- Gestion validation formulaire
+
+function nomControle() {
+    //Contrôle de la validité du nom
+    const leNom = formulaireValues.lastname;
+        if (/^[A-Za-z]{3,20}$/.test(leNom)) {
+            return true;
+        } else {
+            alert("Chiffre et symbole ne sont pas autorise \nne pas dépasser 20 caractères, minimum 3 caractères");
+            return false;
+        }
+};
+
+function prenomControle() {
+    //Contrôle de la validité du prénom
+    const lePrenom = formulaireValues.firstname;
+        if (/^[A-Za-z\s]{3,20}$/.test(lePrenom)) {
+            return true;
+        } else {
+            alert("Chiffre et symbole ne sont pas autorise \nne pas dépasser 20 caractères, minimum 3 caractères");
+            return false;
+        }
+}
+
+function addresseControle() {
+    //Contrôle de la validité du prénom
+    const leAdresse = formulaireValues.address;
+        if (/^[A-Za-z0-9\s]{5,50}$/.test(leAdresse)) {
+            return true;
+        } else {
+            alert("L'adresse doit contenir que des lettres sans ponctuation et des chiffres.");
+            return false;
+        }
+}
+
+function villeControle() {
+    //Contrôle de la validité du prénom
+    const laVille = formulaireValues.city;
+        if (/^[A-Za-z\s]{3,50}$/.test(laVille)) {
+            return true;
+        } else {
+            alert("La ville n'est pas valide.");
+            return false;
+        }
+}
+
+function emailControle() {
+    //Contrôle de la validité du prénom
+    const leEmail = formulaireValues.email;
+        if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(leEmail)) {
+            return true;
+        } else {
+            alert("L'email n'est pas valide.");
+            return false;
+        }
+}
+
+
+//Contrôle validité formulaire avant envoie dans le local storage
+    if (nomControle() && prenomControle() && addresseControle() && villeControle() && emailControle()) {
+        //Mettre l'objet "formulaireValues" dans le local storage
+        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));    
+    } else {
+        alert("Veuillez bien remplir le formulaire");
+    };
+
+//Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer  vers le serveur
+const aEnvoyer = {
+    produitEnregistreDansLocalStorage,
+    formulaireValues
+}
+console.log(aEnvoyer);
+
+})
