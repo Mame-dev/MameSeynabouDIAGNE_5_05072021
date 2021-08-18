@@ -387,8 +387,14 @@ table {
 }
 
 /*Confirmation*/
-.confirmation {
+#container-confirmation {
+  border: 1px solid;
+  width: 80vw;
   text-align: center;
+}
+
+.gras {
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=style.css.map */

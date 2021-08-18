@@ -190,8 +190,8 @@ event.preventDefault();
 
 //Récupération des valeurs du formulaire
 const formulaireValues = {
-    lastname: document.querySelector("#lastname").value,
-    firstname: document.querySelector("#firstname").value,
+    lastName: document.querySelector("#lastName").value,
+    firstName: document.querySelector("#firstName").value,
     address: document.querySelector("#address").value,
     city: document.querySelector("#city").value,
     email: document.querySelector("#email").value,
@@ -203,7 +203,7 @@ console.log(formulaireValues);
 
 function nomControle() {
     //Contrôle de la validité du nom
-    const leNom = formulaireValues.lastname;
+    const leNom = formulaireValues.lastName;
         if (/^[A-Za-z]{3,20}$/.test(leNom)) {
             return true;
         } else {
@@ -214,7 +214,7 @@ function nomControle() {
 
 function prenomControle() {
     //Contrôle de la validité du prénom
-    const lePrenom = formulaireValues.firstname;
+    const lePrenom = formulaireValues.firstName;
         if (/^[A-Za-z\s]{3,20}$/.test(lePrenom)) {
             return true;
         } else {
@@ -249,27 +249,61 @@ function emailControle() {
     //Contrôle de la validité du prénom
     const leEmail = formulaireValues.email;
         if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(leEmail)) {
-            return true;
+            return true;    
         } else {
             alert("L'email n'est pas valide.");
             return false;
         }
 }
 
-
+const productsID = [];
 //Contrôle validité formulaire avant envoie dans le local storage
     if (nomControle() && prenomControle() && addresseControle() && villeControle() && emailControle()) {
         //Mettre l'objet "formulaireValues" dans le local storage
         localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));    
+        localStorage.setItem("prixTotal", JSON.stringify(prixTotal));    
+        
+        //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer  vers le serveur
+        const contact = {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            address: address.value,
+            city: city.value,
+            email: email.value
+            },
+        products = productsID;
+        console.log(contact);
+        console.log(products);
+
+        //Envoie de l'objet "aEnvoyer" vers le serveur
+        const promise01 = fetch('http://localhost:3000/api/cameras/order', {
+            method: "POST",
+            body: JSON.stringify({
+                contact: contact,
+                products: products
+            }),
+            headers: {
+                "Content-Type" : "application/json", 
+            },
+        })
+
+        .then(response => response.json())
+        .then(order => {
+            //Mettre l'id dans le local storage
+            localStorage.setItem("orderId", order.orderId);
+            
+            //Aller vers la page confirmation commande
+            window.location.href = "confirmation.html";
+
+        })
+        .catch(function(err) {
+        });
+
+        console.log("promise01");
+        console.log(promise01);
+    
     } else {
         alert("Veuillez bien remplir le formulaire");
     };
 
-//Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer  vers le serveur
-const aEnvoyer = {
-    produitEnregistreDansLocalStorage,
-    formulaireValues
-}
-console.log(aEnvoyer);
-
-})
+});
