@@ -7,40 +7,49 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
     <title>Orinoco - Zurss 50S</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta name="description" content="Orinoco site e-commerce de caméras vintage">
 </head>
 
 <body>
-
     <!-- Header Start -->
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-            <a href="index.html" class="brand">
-                <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="logo.png" alt="logo Orinoco" />
-            </a>
-            <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    menu
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <a class="navbar-brand" href="index.html">
+                    <h1>Orinoco</h1>
+                </a>
+
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="nav__wrapper">
-                    <li class="nav__item nav__item--end">
-                        <a href="produit.html">Produits</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="panier.html">Panier</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="mailto:Orinoco.caméras@gmail.com">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="navbar-nav navul">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="panier.html">Panier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:Orinoco.caméras@gmail.com">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <!-- Header End -->
 
     <!-- Produits Start -->
     <main class="contain-produit">
-        
+
     </main>
 
     <footer>
@@ -71,8 +80,18 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="js/produits.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

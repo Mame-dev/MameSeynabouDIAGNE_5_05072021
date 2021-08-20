@@ -4,78 +4,92 @@
     <!--  -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
-    
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Orbitron|Quicksand|lobster|Dosis">
+
     <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Accueil - Orinoco</title>
     <meta name="description" content="Orinoco site e-commerce de caméras vintage">
 </head>
 
 <body>
     <!-- Header Start -->
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-            <a href="#" class="brand">
-                <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="logo.png" alt="logo Orinoco" />
-            </a>
-            <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    menu
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <a class="navbar-brand" href="index.html">
+                    <h1>Orinoco</h1>
+                </a>
+
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="nav__wrapper">
-                    <li class="nav__item nav__item--end">
-                        <a href="produit.html">Produits</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="panier.html">Panier</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="mailto:Orinoco.caméras@gmail.com">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="navbar-nav navul">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="panier.html">Panier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:Orinoco.caméras@gmail.com">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <!-- Header End -->
 
     <!-- Description Start -->
-    <div class="top">
-        <h1>
-            Bienvenue sur Orinoco, notre tout nouveau site Internet !
-        </h1>
-        <p>
-            Vous trouverez notre nouvelle collection de caméras vintage.
-        </p>
+    <div class="container-fluid top">
+        <div class="row">
+            <h3 class="col-xl">
+                Bienvenue sur Orinoco, notre tout nouveau site Internet !
+            </h3>
+            <p class="col-xl">
+                Vous trouverez notre nouvelle collection de caméras vintage.
+            </p>
+        </div>
     </div>
     <!-- Description End -->
 
     <!-- Produits Start -->
-    <main id="main">
+    <main id="main" class="container">
         <template id="templateArticle">
-            <article class="bloc">
-                <img
-                src="http://localhost:3000/images/vcam_1.jpg"
-                id="imageUrl"
-                />
-                <div class="text">
-                    <p id="name">Zurss 50S</p>
-                    <p id="price">49900€</p>
-                </div>
-                <p id="description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <a href="produit.html" id="articleLink" class="achat">
-                    <button type="button">
-                        <i class="fas fa-cart-plus fa-2x"></i>
-                    </button>
-                </a>
-            </article>
+            <div class="row">
+                <article class="col-12 col-lg-4">
+                    <div class="card">
+                        <img src="http://localhost:3000/images/vcam_1.jpg" id="imageUrl" class="card-img-top" />
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 id="name">Zurss 50S</h5>
+                                <h5 id="price">49900€</h5>
+                            </div>
+                            <p id="description" class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="produit.html" id="articleLink">
+                                <button type="button" class="btn btn-outline-dark btn-lg btn-block">
+                                    <i class="fas fa-cart-plus fa-2x"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </template>
-      </main>
+    </main>
     <!-- Produits End -->
 
     <!-- Footer start -->
@@ -108,19 +122,19 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script src="js/header.js">
+    <!--<script src="js/header.js">-->
     </script>
     <script src="js/index.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>-->
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

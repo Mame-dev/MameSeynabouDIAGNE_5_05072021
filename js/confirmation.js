@@ -9,7 +9,7 @@ console.log(prixTotal);
 //La structure HTML de la page confirmation
 const positionElement5 = document.querySelector("#container-confirmation")
 
- const structureConfirmation = `
+const structureConfirmation = `
         <h2>Récapitulatif de votre commande</h2>
         <div class="recap-commande">
             <p>Merci pour votre commande</p>
