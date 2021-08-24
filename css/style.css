@@ -1,10 +1,12 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  color: #222;
+  color: #000000 !important;
 }
 
 html {
@@ -56,118 +58,29 @@ body {
   box-shadow: 0 0 6px 3px #b1b1b14b;
   border-radius: 25px !important;
 }
+
 .card img {
   border-top-left-radius: 25px !important;
   border-top-right-radius: 25px !important;
   background-color: #fff;
 }
+
 .card .card-title {
   display: flex;
   justify-content: space-between;
 }
 
-/*#main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-right: 14px;
-}
-.bloc {
-
-    margin-top: 30px;
-    box-shadow: 0 0 6px 3px #b1b1b14b;
-    background-color: white;
-    padding: 3px;
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    height: 360px;
-    &:hover{
-        color: #9932cc;
-    }
-    &.bloc img {
-        height: 67%;
-        width: 100%;
-        margin-right: 11px;
-        object-fit: cover;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        background-color: #fff;
-        }
-    & .text {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        color: black;
-    }
-    & #description {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .achat {
-        display: contents;
-    }
-    .achat button {
-        height: 40px;
-        padding: 5px 2px;
-        background-color: #f3e9f1;
-        border-color: #f3e9f1;
-        border-radius: 15px;
-        margin-top: 10px;
-        cursor: pointer;
-    }
-} 
-.bloc-produit {
-    border-radius: 25px;
-    margin-top: 30px;
-    box-shadow: 0 0 6px 3px #b1b1b14b;
-    background-color: white;
-    padding: 3px;
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    height: 360px;
-    &:hover{
-        color: #9932cc;
-    }
-    &.bloc img {
-        height: 67%;
-        width: 100%;
-        margin-right: 11px;
-        object-fit: cover;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        background-color: #fff;
-        }
-    & .text {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        color: black;
-    }
-}*/
 .footer {
   background-color: #f3e9f1;
   margin-top: 50px;
-}
-
-.container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-right: 14px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .footer--social {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.footer--social :hover {
-  color: #9932cc;
 }
 
 .footer--social a {
@@ -181,41 +94,14 @@ body {
   font-size: larger;
 }
 
-/*@media screen and (min-width: 50px) and (max-width: 374px) {
-    #main  {
-        flex-direction: column;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-    .bloc {
-        width: auto;
-        height: 14em;
-    }
-    .bloc img {
-        height: 7em;
-    }
+@media (min-width: 576px) {
+  .col-sm-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 98%;
+  }
 }
 
-@media screen and (min-width: 375px) and (max-width: 667px) {
-    #main  {
-        flex-direction: column;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-    .bloc {
-        width: auto;
-        height: 14em;
-    }
-    .bloc img {
-        height: 7em;
-    }
-}
-    @media screen and (min-width: 668px) and (max-width: 1024px) {
-
-    .bloc {
-        width: 45%;
-    }
-}*/
 /*produits*/
 .contain {
   display: flex;
@@ -230,22 +116,31 @@ body {
   padding: 20px;
   margin: 45px;
 }
+
 .panier h3 {
   text-align: center;
   margin-bottom: 15px;
 }
+
 .panier .panier__container {
   display: flex;
   justify-content: space-around;
 }
-.panier .panier__total {
-  display: flex;
+
+.btn-sm {
+  margin-left: 7em;
+}
+
+.affichage-prix-html {
+  margin-left: 6.5em;
+  padding-top: 10px;
 }
 
 .commande {
   border: 2px;
   background-color: grayscale;
 }
+
 .commande h3 {
   text-align: center;
 }

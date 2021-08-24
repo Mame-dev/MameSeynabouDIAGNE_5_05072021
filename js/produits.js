@@ -30,12 +30,12 @@ fetch('http://localhost:3000/api/cameras/' + id)
 
 function displayProduct(idProduitSelectionner) {
     //Sélection de la classe ou je vais injecter le code html
-    const positionElement2 = document.querySelector(".contain-produit");
+    const positionElement2 = document.querySelector(".container");
     console.log(positionElement2);
 
     //La structure html pour l'affichage du produit sélectionné
     const structureProduit2 = `
-    <article class="col-12 col-lg-4">
+    <article class="col-sm-12">
         <div class="card">  
             <img
             src="${idProduitSelectionner.imageUrl}"
@@ -48,7 +48,7 @@ function displayProduct(idProduitSelectionner) {
                 </div>
                 <form>
                     <label for = "option_produit"></label>
-                    <select name = "option_produit"  id="option_produit">
+                    <select name = "option_produit"  class="btn btn-success" id="option_produit">
                         <option selected="lenses"> Lenses </option>
                     </select>
                 </form>
@@ -56,7 +56,7 @@ function displayProduct(idProduitSelectionner) {
                     ${idProduitSelectionner.description}
                 </p>
                 <a href="#" id="articleLink" class="achat">
-                    <button id="btn-envoyer" type="submit" name="ajouter-panier" >
+                    <button id="btn-envoyer" class="btn btn-outline-success btn-lg btn-block" type="submit" name="ajouter-panier" >
                         <i class="fas fa-cart-plus fa-2x"></i>
                     </button>
                 </a>

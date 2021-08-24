@@ -30,7 +30,14 @@ else {
         structureProduitPanier =
             structureProduitPanier +
             `
-        <table class="table">
+        <table class="table container">
+            <thead>
+                <tr>
+                    <th scope="col">Produits</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
             <tbody class="panier__total">
                 <tr>
                     <td>${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</td>
@@ -81,7 +88,7 @@ for (let l = 0; l < btn_supprimer.length; l++) {
 //--------- Le bouton pour vider le panier ---------
 // Le code HTML du bouton à afficher dans la page
 const btn_tout_supprimer_panier_html = `
-<button class= "btn-tout-supprimer-panier"> Vider le panier </button>
+<button class= "btn btn-outline-danger btn-sm btn-tout-supprimer-panier"> Vider le panier </button>
 `
 console.log(positionElement3);
 //Insertion du bouton dans le HTML du panier
@@ -138,7 +145,7 @@ const affichageFormulaireHtml = () => {
     const positionElement4 = document.querySelector("#container");
 
     const structureFormulaire = `
-        <form>
+    <form class="container">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
@@ -168,9 +175,10 @@ const affichageFormulaireHtml = () => {
                 <input type="email" name="email" class="form-control" id="email" placeholder="Entrer votre email" required />
             </div>
             <div>
-                <input type="submit" id="envoyerFormulaire" value="Envoyer" />
+                <input type="submit" class="btn btn-outline-success" id="envoyerFormulaire" value="Envoyer" />
             </div>
         </form>
+
         `;
     // Injection HTML
     positionElement4.insertAdjacentHTML("afterend", structureFormulaire);

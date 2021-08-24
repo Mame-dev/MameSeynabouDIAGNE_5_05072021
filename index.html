@@ -49,26 +49,25 @@
         </nav>
     </header>
     <!-- Header End -->
-
-    <!-- Description Start -->
-    <div class="container-fluid top">
-        <div class="row">
-            <h3 class="col-xl">
-                Bienvenue sur Orinoco, notre tout nouveau site Internet !
-            </h3>
-            <p class="col-xl">
-                Vous trouverez notre nouvelle collection de caméras vintage.
-            </p>
-        </div>
-    </div>
-    <!-- Description End -->
-
-    <!-- Produits Start -->
-    <main id="main" class="container">
-        <template id="templateArticle">
+    <div class="container">
+        <!-- Description Start -->
+        <div class="container-fluid top">
             <div class="row">
-                <article class="col-12 col-lg-4">
-                    <div class="card">
+                <h3 class="col-xl-12">
+                    Bienvenue sur Orinoco, notre tout nouveau site Internet !
+                </h3>
+                <p class="col-xl-12">
+                    Vous trouverez notre nouvelle collection de caméras vintage.
+                </p>
+            </div>
+        </div>
+        <!-- Description End -->
+
+        <!-- Produits Start -->
+        <main id="main" class="row">
+            <template id="templateArticle">
+                <article class="col-md-6">
+                    <div class="card ">
                         <img src="http://localhost:3000/images/vcam_1.jpg" id="imageUrl" class="card-img-top" />
                         <div class="card-body">
                             <div class="card-title">
@@ -87,15 +86,15 @@
                         </div>
                     </div>
                 </article>
-            </div>
-        </template>
-    </main>
-    <!-- Produits End -->
+            </template>
+        </main>
+        <!-- Produits End -->
+    </div>
 
     <!-- Footer start -->
     <footer>
         <div class="footer">
-            <div class="contain">
+            <div class="container">
                 <div class="footer--social list-inline text-center">
                     <a href="https://fr-fr.facebook.com/">
                         <i class="fab fa-facebook-f fa-2x"></i>
