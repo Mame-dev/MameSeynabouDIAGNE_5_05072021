@@ -80,14 +80,6 @@ body {
     padding-bottom  : 25px;
 }
 
-/*.container{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-right: 14px;
-}*/
-
 .footer--social {
     display        : flex;
     justify-content: center;
@@ -166,10 +158,10 @@ body {
 /*Confirmation*/
 
 #container-confirmation {
-    border    : 1px solid;
-    width     : 80vw;
-    text-align: center;
-
+    border     : 1px solid;
+    text-align : center;
+    margin-top : 25px;
+    padding-top: 15px;
 }
 
 .gras {

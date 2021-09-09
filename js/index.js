@@ -6,6 +6,7 @@
         displayArticle(article)
     }
 })()
+
 async function getArticles() {
     try {
         //Appelle la reponse de l'api
@@ -31,6 +32,5 @@ function displayArticle(article) {
     cloneElt.getElementById("imageUrl").src = article.imageUrl
     cloneElt.getElementById('articleLink').href += `?id=${article._id}`
     //Intégrer les élèments cloner avec appendChild
-
     document.getElementById("main").appendChild(cloneElt)
 }

@@ -1,13 +1,11 @@
 //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
 let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
-
 //----JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 console.log(produitEnregistreDansLocalStorage);
 
 //----------- L'AFFICHAGE  DES PRODUITS DU PANIER----------
 //Sélection de la classe ou je vais injecter le code HTML
-const positionElement3 = document.querySelector("#container");
-console.log(positionElement3);
+const positionElement2 = document.querySelector("#container");
 
 let structureProduitPanier = [];
 
@@ -18,46 +16,35 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
         <div> Le panier est vide </div>
     </div>
 `;
-    positionElement3.innerHTML = panierVide;
-    console.log(panierVide);
+    positionElement2.innerHTML = panierVide;
 }
 
 //Si le panier n'est pas vide : afficher les produits dans le localStorage
 else {
     for (k = 0; k < produitEnregistreDansLocalStorage.length; k++) {
-        console.log(produitEnregistreDansLocalStorage);
 
         structureProduitPanier =
             structureProduitPanier +
-            `
-        <table class="table container">
-            <thead>
-                <tr>
-                    <th scope="col">Produits</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Supprimer</th>
-                </tr>
-            </thead>
-            <tbody class="panier__total">
-                <tr>
-                    <td>${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</td>
-                    <td>${produitEnregistreDansLocalStorage[k].prix} €</td>
-                    <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
-                </tr>
-            </tbody>
-        </table>
-        `;
+            `<table class="table container">
+                <tbody class="panier__total">
+                    <tr>
+                        <td>${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</td>
+                        <td>${produitEnregistreDansLocalStorage[k].prix} €</td>
+                        <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            `;
     }
     if (k == produitEnregistreDansLocalStorage.length) {
         // injection html dans la page web produit
-        positionElement3.innerHTML = structureProduitPanier;
+        positionElement2.innerHTML = structureProduitPanier;
     }
 }
 
 //--------- Gestion du bouton supprimer l'article ---------
 // Sélection des références de tous les boutons btn-supprimer
 let btn_supprimer = document.querySelectorAll(".btn-supprimer");
-console.log(btn_supprimer);
 
 for (let l = 0; l < btn_supprimer.length; l++) {
     btn_supprimer[l].addEventListener("click", (event) => {
@@ -65,13 +52,11 @@ for (let l = 0; l < btn_supprimer.length; l++) {
 
         //Sélection de l'id du produit qui va être supprimer en cliquant sur le bouton
         let id_selectionner_suppression = produitEnregistreDansLocalStorage[l].id_ProduitSelectionner;
-        console.log(id_selectionner_suppression);
 
-        //avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément ou le btn suppr a été cliqué
+        //Avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément ou le btn suppr a été cliqué
         produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(
             (el) => el.id_ProduitSelectionner !== id_selectionner_suppression
         );
-        console.log(produitEnregistreDansLocalStorage);
 
         //On envoie le variable dans le local Storage
         //Transformation en format JSON et l'envoyer dans la key "produit"
@@ -90,13 +75,11 @@ for (let l = 0; l < btn_supprimer.length; l++) {
 const btn_tout_supprimer_panier_html = `
 <button class= "btn btn-outline-danger btn-sm btn-tout-supprimer-panier"> Vider le panier </button>
 `
-console.log(positionElement3);
 //Insertion du bouton dans le HTML du panier
-positionElement3.insertAdjacentHTML("beforeend", btn_tout_supprimer_panier_html);
+positionElement2.insertAdjacentHTML("beforeend", btn_tout_supprimer_panier_html);
 
 // La sélection de la référence du bouton "btn-tout-supprimer-panier"
 const btn_tout_supprimer_panier = document.querySelector(".btn-tout-supprimer-panier")
-console.log(btn_tout_supprimer_panier);
 
 // Suppression de la key "produit" du local Storage pour vider entierement le panier
 btn_tout_supprimer_panier.addEventListener("click", (event) => {
@@ -115,28 +98,23 @@ btn_tout_supprimer_panier.addEventListener("click", (event) => {
 //--------- Le montant total du panier ---------
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 let prixTotalCalcul = [];
-
 //Aller chercher les prix dans le panier
 for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
     let prixProduitsDansLePanier = produitEnregistreDansLocalStorage[m].prix;
-
     //Mettre les prix du panier dans la variable "prixTotalCalcul"
     prixTotalCalcul.push(prixProduitsDansLePanier)
-
-    console.log(prixTotalCalcul);
 }
 
 //Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode .reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const prixTotal = prixTotalCalcul.reduce(reducer, 0)
-console.log(prixTotal);
 
 //Le code HTML du prix total à afficher 
 const affichagePrixHtml = `
 <div class= "affichage-prix-html"> Le prix total est de : ${prixTotal} € </div>
 `
 //Injection html dans la page panier après le dernier enfant
-positionElement3.insertAdjacentHTML("beforeend", affichagePrixHtml);
+positionElement2.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
 //----------------- Le formulaire de commande ----------
 
@@ -182,7 +160,6 @@ const affichageFormulaireHtml = () => {
         `;
     // Injection HTML
     positionElement4.insertAdjacentHTML("afterend", structureFormulaire);
-
 };
 
 // Affichage du formulaire
@@ -190,12 +167,10 @@ affichageFormulaireHtml();
 
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
-console.log(btnEnvoyerFormulaire);
 
 //-----------addEventListener---------
 btnEnvoyerFormulaire.addEventListener("click", (event) => {
     event.preventDefault();
-
     //Récupération des valeurs du formulaire
     const formulaireValues = {
         lastName: document.querySelector("#lastName").value,
@@ -204,11 +179,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
         city: document.querySelector("#city").value,
         email: document.querySelector("#email").value,
     }
-    console.log("formulaireValues");
-    console.log(formulaireValues);
-
     //---------------- Gestion validation formulaire
-
     function nomControle() {
         //Contrôle de la validité du nom
         const leNom = formulaireValues.lastName;
@@ -232,7 +203,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     }
 
     function addresseControle() {
-        //Contrôle de la validité du prénom
+        //Contrôle de la validité de l'adresse
         const leAdresse = formulaireValues.address;
         if (/^[A-Za-z0-9\s]{5,50}$/.test(leAdresse)) {
             return true;
@@ -243,7 +214,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     }
 
     function villeControle() {
-        //Contrôle de la validité du prénom
+        //Contrôle de la validité de la ville
         const laVille = formulaireValues.city;
         if (/^[A-Za-z\s]{3,50}$/.test(laVille)) {
             return true;
@@ -254,7 +225,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     }
 
     function emailControle() {
-        //Contrôle de la validité du prénom
+        //Contrôle de la validité de l'email
         const leEmail = formulaireValues.email;
         if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(leEmail)) {
             return true;
@@ -267,7 +238,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     const productsID = [];
     //Contrôle validité formulaire avant envoie dans le local storage
     if (nomControle() && prenomControle() && addresseControle() && villeControle() && emailControle()) {
-        //Mettre l'objet "formulaireValues" dans le local storage
+        //Mettre l'objet "formulaireValues" et "prixTotal" dans le local storage
         localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
         localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
 
@@ -280,10 +251,8 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
                 email: email.value
             },
             products = productsID;
-        console.log(contact);
-        console.log(products);
 
-        //Envoie de l'objet "aEnvoyer" vers le serveur
+        //Envoie de l'objet vers le serveur
         const promise01 = fetch('http://localhost:3000/api/cameras/order', {
                 method: "POST",
                 body: JSON.stringify({
@@ -302,13 +271,8 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
 
                 //Aller vers la page confirmation commande
                 window.location.href = "confirmation.html";
-
             })
             .catch(function (err) {});
-
-        console.log("promise01");
-        console.log(promise01);
-
     } else {
         alert("Veuillez bien remplir le formulaire");
     };

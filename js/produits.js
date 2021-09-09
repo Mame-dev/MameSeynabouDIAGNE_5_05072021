@@ -1,17 +1,9 @@
 //Récupération de la chaîne de requête dans l'URL
 const queryString_url_id = window.location.search;
-console.log(queryString_url_id);
-
-//Méthode 1 avec slice - pour extraire juste l'Id
-//const leId = queryString_url_id.slice(1);
-//console.log(leId);
 
 //Méthode 2 avec searchParams - pour extraire juste l'Id
 const urlSearchParams = new URLSearchParams(queryString_url_id);
-console.log(urlSearchParams);
-
 const id = urlSearchParams.get("id");
-console.log(id);
 
 //Affichage du produit (de l'objet) qui a été sélectionné par l'id)
 //---------2 méthodes possible----------
@@ -29,9 +21,8 @@ fetch('http://localhost:3000/api/cameras/' + id)
     })
 
 function displayProduct(idProduitSelectionner) {
-    //Sélection de la classe ou je vais injecter le code html
-    const positionElement2 = document.querySelector(".container");
-    console.log(positionElement2);
+    //Sélection de la classe css ou je vais injecter le code html
+    const positionElement1 = document.querySelector(".container");
 
     //La structure html pour l'affichage du produit sélectionné
     const structureProduit2 = `
@@ -67,9 +58,8 @@ function displayProduct(idProduitSelectionner) {
 
     //Le formulaire s'adapte au nombre d'option qu'il y a dans l'objet du produit
     const optionQuantite = idProduitSelectionner.lenses;
-    let structureOptions = [];
-    console.log(optionQuantite);
 
+    let structureOptions = [];
     // La boucle for pour afficher toutes les options du produit
     for (let j = 0; j < optionQuantite.length; j++) {
         structureOptions =
@@ -78,22 +68,18 @@ function displayProduct(idProduitSelectionner) {
         <option value="${optionQuantite[j]}">${optionQuantite[j]}</option>
         `;
     }
-    console.log(structureOptions);
 
     // injection html dans la page web produit
-    positionElement2.innerHTML = structureProduit2;
+    positionElement1.innerHTML = structureProduit2;
 
     // injection html dans la page produit pour le choix des options dans le formulaire
-    const positionElement3 = document.querySelector("#option_produit")
-    positionElement3.innerHTML = structureOptions;
-    console.log(positionElement3);
+    const positionElement2 = document.querySelector("#option_produit")
+    positionElement2.innerHTML = structureOptions;
 
-    //-------- La gestion du panier
-    //La récupération des données sélectionnées par l'utilisateur et envoie du panier
-
-    //Sélection du bouton Ajouter l'article au panier
+    //-------- La gestion du panier ----------------
+    /*La récupération des données sélectionnées par l'utilisateur et envoie du panier*/
+    //Sélection du bouton envoyer l'article au panier
     const btn_envoyerPanier = document.querySelector("#btn-envoyer");
-    console.log(btn_envoyerPanier);
 
     //Ecouter le bouton et l'envoyer au panier
     btn_envoyerPanier.addEventListener("click", (event) => {
@@ -101,11 +87,9 @@ function displayProduct(idProduitSelectionner) {
 
         //Sélection de l'id du formulaire
         const idForm = document.querySelector("#option_produit");
-        console.log(option_produit);
 
         //Mettre le choix de l'utilisateur dans une variable
         const choixForm = idForm.value;
-        console.log(choixForm);
 
         //Récuperation des valeurs du formulaire pour envoyer dans le panier
         let optionsProduit = {
@@ -116,11 +100,8 @@ function displayProduct(idProduitSelectionner) {
             prix: idProduitSelectionner.price / 100
         };
 
-        console.log(optionsProduit);
-
-        //-------Le local Storage-------
-        //------- Stocker la récupération des valeurs du formulaire dans le local storage-----
-
+        //------- Le local Storage -------
+        //------- Stocker la récupération des valeurs du formulaire dans le local storage -----
         //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
         let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
@@ -141,7 +122,6 @@ Consultez le panier OK ou revenir à l'accueil ANNULER`)) {
         if (produitEnregistreDansLocalStorage) {
             //Ajout dans le tableau de l'objet avec les values choisi par l'utilisateur
             produitEnregistreDansLocalStorage.push(optionsProduit);
-
             //Transformation en format JSON et l'envoyer dans la key "produit"
             localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage));
             console.log(produitEnregistreDansLocalStorage);
