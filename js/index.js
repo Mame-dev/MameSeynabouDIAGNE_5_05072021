@@ -1,5 +1,5 @@
 //Fonction principale, gere le temps de telechargement
-(async function () {
+(async function articles() {
     const articles = await getArticles()
     //Creation de la boucle des articles
     for (article of articles) {

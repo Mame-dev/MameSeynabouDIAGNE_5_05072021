@@ -1,16 +1,14 @@
-//Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et les values qui sont dans le local storage
-let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
+//Déclaration de la variable "camera" dans laquelle on met les key et les values qui sont dans le local storage
 //----JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
-console.log(produitEnregistreDansLocalStorage);
+let camera = JSON.parse(localStorage.getItem("produit"));
 
 //----------- L'AFFICHAGE  DES PRODUITS DU PANIER----------
 //Sélection de la classe ou je vais injecter le code HTML
 const positionElement2 = document.querySelector("#container");
 
 let structureProduitPanier = [];
-
 //Si le panier est vide : afficher le panier est vide
-if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStorage == 0) {
+if (camera === null || camera == 0) {
     const panierVide = `
     <div class="container-panier-vide">
         <div> Le panier est vide </div>
@@ -21,22 +19,22 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
 
 //Si le panier n'est pas vide : afficher les produits dans le localStorage
 else {
-    for (k = 0; k < produitEnregistreDansLocalStorage.length; k++) {
-
+    for (k = 0; k < camera.length; k++) {
         structureProduitPanier =
             structureProduitPanier +
             `<table class="table container">
                 <tbody class="panier__total">
                     <tr>
-                        <td>${produitEnregistreDansLocalStorage[k].name} - ${produitEnregistreDansLocalStorage[k].option_produit}</td>
-                        <td>${produitEnregistreDansLocalStorage[k].prix} €</td>
+                        <td>Quantité: ${camera[k].quantité}</td>
+                        <td>${camera[k].name} - ${camera[k].option_produit}</td>
+                        <td>${camera[k].prix} €</td>
                         <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
                     </tr>
                 </tbody>
             </table>
             `;
     }
-    if (k == produitEnregistreDansLocalStorage.length) {
+    if (k == camera.length) {
         // injection html dans la page web produit
         positionElement2.innerHTML = structureProduitPanier;
     }
@@ -45,24 +43,20 @@ else {
 //--------- Gestion du bouton supprimer l'article ---------
 // Sélection des références de tous les boutons btn-supprimer
 let btn_supprimer = document.querySelectorAll(".btn-supprimer");
-
 for (let l = 0; l < btn_supprimer.length; l++) {
     btn_supprimer[l].addEventListener("click", (event) => {
         event.preventDefault();
-
         //Sélection de l'id du produit qui va être supprimer en cliquant sur le bouton
-        let id_selectionner_suppression = produitEnregistreDansLocalStorage[l].id_ProduitSelectionner;
-
+        let id_selectionner_suppression = camera[l].id_ProduitSelectionner + ":" + camera[l].option_produit;
         //Avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément ou le btn suppr a été cliqué
-        produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(
-            (el) => el.id_ProduitSelectionner !== id_selectionner_suppression
+        camera = camera.filter(
+            (el) => el.id_ProduitSelectionner + ":" + el.option_produit !== id_selectionner_suppression
         );
-
         //On envoie le variable dans le local Storage
         //Transformation en format JSON et l'envoyer dans la key "produit"
         localStorage.setItem(
             "produit",
-            JSON.stringify(produitEnregistreDansLocalStorage)
+            JSON.stringify(camera)
         );
         // Alerte pour avertir que le produit a été supprimer et rechargement de la page
         alert("Ce produit a été supprimer du panier");
@@ -80,17 +74,13 @@ positionElement2.insertAdjacentHTML("beforeend", btn_tout_supprimer_panier_html)
 
 // La sélection de la référence du bouton "btn-tout-supprimer-panier"
 const btn_tout_supprimer_panier = document.querySelector(".btn-tout-supprimer-panier")
-
 // Suppression de la key "produit" du local Storage pour vider entierement le panier
 btn_tout_supprimer_panier.addEventListener("click", (event) => {
     event.preventDefault();
-
     //.removeItem pour vider le local storage
     localStorage.removeItem("produit");
-
     //alert "Le panier a été vidé"
     alert("Le panier a été vidé");
-
     //rechargement de la page
     window.location.href = "panier.html";
 });
@@ -99,8 +89,8 @@ btn_tout_supprimer_panier.addEventListener("click", (event) => {
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 let prixTotalCalcul = [];
 //Aller chercher les prix dans le panier
-for (let m = 0; m < produitEnregistreDansLocalStorage.length; m++) {
-    let prixProduitsDansLePanier = produitEnregistreDansLocalStorage[m].prix;
+for (let m = 0; m < camera.length; m++) {
+    let prixProduitsDansLePanier = camera[m].prix;
     //Mettre les prix du panier dans la variable "prixTotalCalcul"
     prixTotalCalcul.push(prixProduitsDansLePanier)
 }
@@ -117,7 +107,6 @@ const affichagePrixHtml = `
 positionElement2.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
 //----------------- Le formulaire de commande ----------
-
 const affichageFormulaireHtml = () => {
     // Sélection élément du DOM pour le positionnement du formulaire
     const positionElement4 = document.querySelector("#container");
@@ -161,13 +150,11 @@ const affichageFormulaireHtml = () => {
     // Injection HTML
     positionElement4.insertAdjacentHTML("afterend", structureFormulaire);
 };
-
 // Affichage du formulaire
 affichageFormulaireHtml();
 
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
-
 //-----------addEventListener---------
 btnEnvoyerFormulaire.addEventListener("click", (event) => {
     event.preventDefault();

@@ -69,10 +69,10 @@ body {
 }
 
 .footer {
-  background-color: #f3e9f1;
-  margin-top: 50px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  background-color: #f3e9f1 !important;
+  /*margin-top      : 50px;
+  padding-top       : 25px;
+  padding-bottom    : 25px;*/
 }
 
 .footer--social {
@@ -152,6 +152,30 @@ body {
 
 .gras {
   font-weight: 900;
+}
+
+.card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  box-shadow: none;
+}
+
+.card2 {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 5;
+  border: none;
+  border-radius: 0.28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  margin-top: 20px;
+}
+
+main {
+  margin-bottom: 10vw;
 }
 
 /*# sourceMappingURL=style.css.map */
