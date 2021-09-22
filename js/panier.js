@@ -12,7 +12,7 @@ if (camera === null || camera == 0) {
     const panierVide = `
     <div class="container-panier-vide">
         <div> Le panier est vide </div>
-    </div>
+    </div> 
 `;
     positionElement2.innerHTML = panierVide;
 }
@@ -181,7 +181,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     function prenomControle() {
         //Contrôle de la validité du prénom
         const lePrenom = formulaireValues.firstName;
-        if (/^[A-Za-z\s]{3,20}$/.test(lePrenom)) {
+        if (/^[A-Za-z\s'? -?]{3,20}$/.test(lePrenom)) {
             return true;
         } else {
             alert("Chiffre et symbole ne sont pas autorise \nne pas dépasser 20 caractères, minimum 3 caractères");
@@ -203,7 +203,7 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     function villeControle() {
         //Contrôle de la validité de la ville
         const laVille = formulaireValues.city;
-        if (/^[A-Za-z\s]{3,50}$/.test(laVille)) {
+        if (/^[A-Za-z\s'? -?]{3,50}$/.test(laVille)) {
             return true;
         } else {
             alert("La ville n'est pas valide.");
@@ -255,7 +255,6 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
             .then(order => {
                 //Mettre l'id dans le local storage
                 localStorage.setItem("orderId", order.orderId);
-
                 //Aller vers la page confirmation commande
                 window.location.href = "confirmation.html";
             })
@@ -263,5 +262,4 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
     } else {
         alert("Veuillez bien remplir le formulaire");
     };
-
 });

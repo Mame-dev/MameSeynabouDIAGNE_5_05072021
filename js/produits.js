@@ -6,8 +6,6 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 const id = urlSearchParams.get("id");
 
 //Affichage du produit (de l'objet) qui a été sélectionné par l'id)
-//---------2 méthodes possible----------
-
 //--- Méthode 1 : avec fetch et en mettant la valeur de l'id à la fin de  l'url
 fetch('http://localhost:3000/api/cameras/' + id)
     .then(function (response) {
