@@ -9,105 +9,119 @@ const positionElement2 = document.querySelector("#container");
 let structureProduitPanier = [];
 //Si le panier est vide : afficher le panier est vide
 if (camera === null || camera == 0) {
-    const panierVide = `
-    <div class="container-panier-vide">
-        <div> Le panier est vide </div>
-    </div> 
-`;
-    positionElement2.innerHTML = panierVide;
+    function panierVide() {
+        const panierVide = `
+        <div class="container-panier-vide">
+            <div> Le panier est vide </div>
+        </div> 
+        `;
+        positionElement2.innerHTML = panierVide;
+    };
+    panierVide();
 }
 
 //Si le panier n'est pas vide : afficher les produits dans le localStorage
 else {
-    for (k = 0; k < camera.length; k++) {
-        structureProduitPanier =
-            structureProduitPanier +
-            `<table class="table container">
-                <tbody class="panier__total">
-                    <tr>
-                        <td>Quantité: ${camera[k].quantité}</td>
-                        <td>${camera[k].name} - ${camera[k].option_produit}</td>
-                        <td>${camera[k].prix} €</td>
-                        <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
-                    </tr>
-                </tbody>
-            </table>
-            `;
-    }
-    if (k == camera.length) {
-        // injection html dans la page web produit
-        positionElement2.innerHTML = structureProduitPanier;
-    }
+    function affichageCameraPanier() {
+        for (k = 0; k < camera.length; k++) {
+            structureProduitPanier =
+                structureProduitPanier +
+                `<table class="table container">
+                    <tbody class="panier__total">
+                        <tr>
+                            <td>Quantité: ${camera[k].quantité}</td>
+                            <td>${camera[k].name} - ${camera[k].option_produit}</td>
+                            <td>${camera[k].prix} €</td>
+                            <td class ="btn-supprimer"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                `;
+        }
+        if (k == camera.length) {
+            // injection html dans la page web produit
+            positionElement2.innerHTML = structureProduitPanier;
+        }
+    };
+    affichageCameraPanier();
 }
 
 //--------- Gestion du bouton supprimer l'article ---------
-// Sélection des références de tous les boutons btn-supprimer
-let btn_supprimer = document.querySelectorAll(".btn-supprimer");
-for (let l = 0; l < btn_supprimer.length; l++) {
-    btn_supprimer[l].addEventListener("click", (event) => {
-        event.preventDefault();
-        //Sélection de l'id du produit qui va être supprimer en cliquant sur le bouton
-        let id_selectionner_suppression = camera[l].id_ProduitSelectionner + ":" + camera[l].option_produit;
-        //Avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément ou le btn suppr a été cliqué
-        camera = camera.filter(
-            (el) => el.id_ProduitSelectionner + ":" + el.option_produit !== id_selectionner_suppression
-        );
-        //On envoie le variable dans le local Storage
-        //Transformation en format JSON et l'envoyer dans la key "produit"
-        localStorage.setItem(
-            "produit",
-            JSON.stringify(camera)
-        );
-        // Alerte pour avertir que le produit a été supprimer et rechargement de la page
-        alert("Ce produit a été supprimer du panier");
-        window.location.href = "panier.html";
-    });
-}
+function supprimerCamera() {
+    // Sélection des références de tous les boutons btn-supprimer
+    let btn_supprimer = document.querySelectorAll(".btn-supprimer");
+    for (let l = 0; l < btn_supprimer.length; l++) {
+        btn_supprimer[l].addEventListener("click", (event) => {
+            event.preventDefault();
+            //Sélection de l'id du produit qui va être supprimer en cliquant sur le bouton
+            let id_selectionner_suppression = camera[l].id_ProduitSelectionner + ":" + camera[l].option_produit;
+            //Avec la méthode filter je sélectionne les éléments à garder et je supprime l'élément ou le btn suppr a été cliqué
+            camera = camera.filter(
+                (el) => el.id_ProduitSelectionner + ":" + el.option_produit !== id_selectionner_suppression
+            );
+            //On envoie le variable dans le local Storage
+            //Transformation en format JSON et l'envoyer dans la key "produit"
+            localStorage.setItem(
+                "produit",
+                JSON.stringify(camera)
+            );
+            // Alerte pour avertir que le produit a été supprimer et rechargement de la page
+            alert("Ce produit a été supprimer du panier");
+            window.location.href = "panier.html";
+        });
+    }
+};
+supprimerCamera();
 
 //--------- Le bouton pour vider le panier ---------
-// Le code HTML du bouton à afficher dans la page
-const btn_tout_supprimer_panier_html = `
-<button class= "btn btn-outline-danger btn-sm btn-tout-supprimer-panier"> Vider le panier </button>
-`
-//Insertion du bouton dans le HTML du panier
-positionElement2.insertAdjacentHTML("beforeend", btn_tout_supprimer_panier_html);
+function supprimerPanier() {
+    // Le code HTML du bouton à afficher dans la page
+    const btn_tout_supprimer_panier_html = `
+    <button class= "btn btn-outline-danger btn-sm btn-tout-supprimer-panier"> Vider le panier </button>
+    `
+    //Insertion du bouton dans le HTML du panier
+    positionElement2.insertAdjacentHTML("beforeend", btn_tout_supprimer_panier_html);
 
-// La sélection de la référence du bouton "btn-tout-supprimer-panier"
-const btn_tout_supprimer_panier = document.querySelector(".btn-tout-supprimer-panier")
-// Suppression de la key "produit" du local Storage pour vider entierement le panier
-btn_tout_supprimer_panier.addEventListener("click", (event) => {
-    event.preventDefault();
-    //.removeItem pour vider le local storage
-    localStorage.removeItem("produit");
-    //alert "Le panier a été vidé"
-    alert("Le panier a été vidé");
-    //rechargement de la page
-    window.location.href = "panier.html";
-});
+    // La sélection de la référence du bouton "btn-tout-supprimer-panier"
+    const btn_tout_supprimer_panier = document.querySelector(".btn-tout-supprimer-panier")
+    // Suppression de la key "produit" du local Storage pour vider entierement le panier
+    btn_tout_supprimer_panier.addEventListener("click", (event) => {
+        event.preventDefault();
+        //.removeItem pour vider le local storage
+        localStorage.removeItem("produit");
+        //alert "Le panier a été vidé"
+        alert("Le panier a été vidé");
+        //rechargement de la page
+        window.location.href = "panier.html";
+    });
+};
+supprimerPanier();
 
 //--------- Le montant total du panier ---------
-//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
-let prixTotalCalcul = [];
-//Aller chercher les prix dans le panier
-for (let m = 0; m < camera.length; m++) {
-    let prixProduitsDansLePanier = camera[m].prix;
-    //Mettre les prix du panier dans la variable "prixTotalCalcul"
-    prixTotalCalcul.push(prixProduitsDansLePanier)
-}
+function prixTotal() {
+    //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+    let prixTotalCalcul = [];
+    //Aller chercher les prix dans le panier
+    for (let m = 0; m < camera.length; m++) {
+        let prixProduitsDansLePanier = camera[m].prix;
+        //Mettre les prix du panier dans la variable "prixTotalCalcul"
+        prixTotalCalcul.push(prixProduitsDansLePanier)
+    }
+    //Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode .reduce
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const prixTotal = prixTotalCalcul.reduce(reducer, 0)
+    //Le code HTML du prix total à afficher 
+    const affichagePrixHtml = `
+    <div class= "affichage-prix-html"> Le prix total est de : ${prixTotal} € </div>
+    `
+    //Injection html dans la page panier après le dernier enfant
+    positionElement2.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
-//Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode .reduce
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-const prixTotal = prixTotalCalcul.reduce(reducer, 0)
-
-//Le code HTML du prix total à afficher 
-const affichagePrixHtml = `
-<div class= "affichage-prix-html"> Le prix total est de : ${prixTotal} € </div>
-`
-//Injection html dans la page panier après le dernier enfant
-positionElement2.insertAdjacentHTML("beforeend", affichagePrixHtml);
+};
+prixTotal();
 
 //----------------- Le formulaire de commande ----------
-const affichageFormulaireHtml = () => {
+function affichageFormulaireHtml() {
     // Sélection élément du DOM pour le positionnement du formulaire
     const positionElement4 = document.querySelector("#container");
 
@@ -222,44 +236,48 @@ btnEnvoyerFormulaire.addEventListener("click", (event) => {
         }
     }
 
-    const productsID = [];
-    //Contrôle validité formulaire avant envoie dans le local storage
-    if (nomControle() && prenomControle() && addresseControle() && villeControle() && emailControle()) {
-        //Mettre l'objet "formulaireValues" et "prixTotal" dans le local storage
-        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
-        localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
+    function controle() {
+        const productsID = [];
+        //Contrôle validité formulaire avant envoie dans le local storage
 
-        //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer  vers le serveur
-        const contact = {
-                firstName: firstName.value,
-                lastName: lastName.value,
-                address: address.value,
-                city: city.value,
-                email: email.value
-            },
-            products = productsID;
+        if (nomControle() && prenomControle() && addresseControle() && villeControle() && emailControle()) {
+            //Mettre l'objet "formulaireValues" et "prixTotal" dans le local storage
+            localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+            localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
 
-        //Envoie de l'objet vers le serveur
-        const promise01 = fetch('http://localhost:3000/api/cameras/order', {
-                method: "POST",
-                body: JSON.stringify({
-                    contact: contact,
-                    products: products
-                }),
-                headers: {
-                    "Content-Type": "application/json",
+            //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer  vers le serveur
+            const contact = {
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    address: address.value,
+                    city: city.value,
+                    email: email.value
                 },
-            })
+                products = productsID;
 
-            .then(response => response.json())
-            .then(order => {
-                //Mettre l'id dans le local storage
-                localStorage.setItem("orderId", order.orderId);
-                //Aller vers la page confirmation commande
-                window.location.href = "confirmation.html";
-            })
-            .catch(function (err) {});
-    } else {
-        alert("Veuillez bien remplir le formulaire");
+            //Envoie de l'objet vers le serveur
+            const promise01 = fetch('http://localhost:3000/api/cameras/order', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        contact: contact,
+                        products: products
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+
+                .then(response => response.json())
+                .then(order => {
+                    //Mettre l'id dans le local storage
+                    localStorage.setItem("orderId", order.orderId);
+                    //Aller vers la page confirmation commande
+                    window.location.href = "confirmation.html";
+                })
+                .catch(function (err) {});
+        } else {
+            alert("Veuillez bien remplir le formulaire");
+        }
     };
+    controle();
 });

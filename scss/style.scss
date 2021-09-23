@@ -174,25 +174,17 @@ body {
     margin    : 0;
     padding   : 1em;
     border    : none;
-    border-top: 1px solid rgba(34, 36, 38, .1);
     box-shadow: none;
 
 }
 
 .card2 {
-    font-size    : 1em;
-    overflow     : hidden;
-    padding      : 5px;
-    border       : none;
-    border-radius: .28571429rem;
-    box-shadow   : 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    margin-top   : 20px;
-}
-
-.w-100 {
-    width     : 100% !important;
-    height    : 29vh !important;
-    object-fit: cover;
+    font-size : 1em;
+    overflow  : hidden;
+    padding   : 5px;
+    border    : none;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top: 20px;
 }
 
 main {
